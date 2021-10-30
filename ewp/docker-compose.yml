@@ -34,6 +34,7 @@ services:
     build: local-ewp
     volumes:
       - ./local-ewp/ewp-data:/root:ro
+      - ./local-ewp/ewp-data/ROOT:/usr/local/tomee/webapps/ROOT
     networks:
       inner:
       outer:

@@ -1,7 +1,8 @@
 #!/bin/bash
 # Configure EWP
-rm -rf /usr/local/tomee/webapps/ROOT
-unzip /root/ewp-reference-connector-3.0.0-SNAPSHOT.war -d /usr/local/tomee/webapps/ROOT
+rm -rf /usr/local/tomee/webapps/ROOT/*
+unzip /root/ewp-reference-connector.war -d /usr/local/tomee/webapps/ROOT
+unzip /root/test-0.0.1-SNAPSHOT.war -d /usr/local/tomee/webapps/test
 mkdir -p /usr/local/tomee/certs
 keytool -v -importkeystore -srckeystore /root/keys/ewp-local-uma.p12 -srcstoretype PKCS12 \
 	-destkeystore /usr/local/tomee/certs/ewp-local-uma.jks -deststoretype JKS \
@@ -21,6 +22,7 @@ cp /root/mysql-connector-java-8.0.21.jar /usr/local/tomee/lib/mysql-connector-ja
 cp /root/conf/tomee.xml /usr/local/tomee/conf/tomee.xml
 cp /root/conf/server.xml /usr/local/tomee/conf/server.xml
 cp /root/conf/ewp.properties /usr/local/tomee/conf/ewp.properties
-echo "ewp.override.properties=/usr/local/tomee/conf/ewp.properties" >> /usr/local/tomee/conf/catalina.properties
+cp /root/conf/catalina.properties /usr/local/tomee/conf/catalina.properties
+cp /root/conf/logging.properties /usr/local/tomee/conf/logging.properties
 cd /usr/local/tomee
 catalina.sh run
