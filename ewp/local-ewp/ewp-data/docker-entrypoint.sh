@@ -1,8 +1,12 @@
 #!/bin/bash
 # Configure EWP
+if [ ! -d "/usr/local/tomee/webapps/4dm1n" ]; then
+	mkdir -p /usr/local/tomee/webapps/4dm1n;
+	cp -r /usr/local/tomee/webapps/ROOT/* /usr/local/tomee/webapps/4dm1n;
+fi
 rm -rf /usr/local/tomee/webapps/ROOT/*
 unzip /root/ewp-reference-connector.war -d /usr/local/tomee/webapps/ROOT
-unzip /root/test-0.0.1-SNAPSHOT.war -d /usr/local/tomee/webapps/test
+#unzip /root/test-0.0.1-SNAPSHOT.war -d /usr/local/tomee/webapps/test
 mkdir -p /usr/local/tomee/certs
 keytool -v -importkeystore -srckeystore /root/keys/ewp-local-uma.p12 -srcstoretype PKCS12 \
 	-destkeystore /usr/local/tomee/certs/ewp-local-uma.jks -deststoretype JKS \
