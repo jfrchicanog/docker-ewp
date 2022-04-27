@@ -14,20 +14,20 @@ services:
     ports:
       - "3306:3306"
 
-  db1:
-    image: mysql:5.7
-    volumes:
-      - ./database1:/var/lib/mysql
-    environment:
-      - MYSQL_DATABASE=ewp
-      - MYSQL_USER=ewpuser
-      - MYSQL_PASSWORD=ewppassword
-      - MYSQL_ROOT_PASSWORD=ewppassword
-    networks:
-      - inner
-    ports:
-      - "3307:3306"
-
+#  db1:
+#    image: mysql:5.7
+#    volumes:
+#      - ./database1:/var/lib/mysql
+#    environment:
+#      - MYSQL_DATABASE=ewp
+#      - MYSQL_USER=ewpuser
+#      - MYSQL_PASSWORD=ewppassword
+#      - MYSQL_ROOT_PASSWORD=ewppassword
+#    networks:
+#      - inner
+#    ports:
+#      - "3307:3306"
+#
   web:
     depends_on:
       - db
@@ -41,17 +41,17 @@ services:
         aliases:
           - local.ewp.uma.es
 
-  web1:
-    depends_on:
-      - db1
-    build: test-ewp
-    volumes:
-      - ./test-ewp/ewp-data:/root:ro
-    networks:
-      inner:
-      outer:
-        aliases:
-          - test.ewp.uma.es
+#  web1:
+#    depends_on:
+#      - db1
+#    build: test-ewp
+#    volumes:
+#      - ./test-ewp/ewp-data:/root:ro
+#    networks:
+#      inner:
+#      outer:
+#        aliases:
+#          - test.ewp.uma.es
 
   registry:
     image: docker.pkg.github.com/erasmus-without-paper/ewp-registry-service/ewp-registry-service:latest
