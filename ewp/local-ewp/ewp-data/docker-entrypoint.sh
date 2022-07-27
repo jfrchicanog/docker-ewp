@@ -1,9 +1,9 @@
 #!/bin/bash
 # Configure EWP
-if [ ! -d "/usr/local/tomee/webapps/4dm1n" ]; then
-	mkdir -p /usr/local/tomee/webapps/4dm1n;
-	cp -r /usr/local/tomee/webapps/ROOT/* /usr/local/tomee/webapps/4dm1n;
-fi
+#if [ ! -d "/usr/local/tomee/webapps/4dm1n" ]; then
+#	mkdir -p /usr/local/tomee/webapps/4dm1n;
+#	cp -r /usr/local/tomee/webapps/ROOT/* /usr/local/tomee/webapps/4dm1n;
+#fi
 rm -rf /usr/local/tomee/webapps/ROOT/*
 unzip /root/ewp-reference-connector.war -d /usr/local/tomee/webapps/ROOT
 #unzip /root/test-0.0.1-SNAPSHOT.war -d /usr/local/tomee/webapps/test
